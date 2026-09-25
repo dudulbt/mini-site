@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Uma surpresa para você ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffffff, #ffe5e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #8b0000;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 550px;
+            background: white;
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(139, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .tela {
+            display: none;
+        }
+
+        .tela.ativa {
+            display: block;
+            animation: aparecer 0.5s ease;
+        }
+
+        .coracao {
+            font-size: 70px;
+            margin-bottom: 20px;
+            animation: pulsar 1.5s infinite;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .subtitulo {
+            color: #a00000;
+            font-weight: bold;
+        }
+
+        button {
+            border: none;
+            background: #c40000;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 6px;
+        }
+
+        button:hover {
+            background: #8b0000;
+            transform: scale(1.05);
+        }
+
+        .alternativas {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .alternativa {
+            width: 100%;
+            background: #fff;
+            color: #8b0000;
+            border: 2px solid #e5b5b5;
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .alternativa:hover {
+            background: #ffe5e5;
+            border-color: #c40000;
+        }
+
+        .alternativa.selecionada {
+            background: #c40000;
+            color: white;
+            border-color: #c40000;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            border: 2px solid #e5b5b5;
+            border-radius: 15px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        textarea:focus {
+            border-color: #c40000;
+        }
+
+        .erro {
+            color: #c40000;
+            font-weight: bold;
+            margin: 10px 0;
+            display: none;
+        }
+
+        .progresso {
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .recompensas {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .recompensa {
+            border: 2px solid #e5b5b5;
+            border-radius: 18px;
+            padding: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .recompensa:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.15);
+        }
+
+        .recompensa h3 {
+            margin-bottom: 8px;
+            color: #8b0000;
+        }
+
+        .recompensa p {
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+
+        .grande {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulsar {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TELA INICIAL -->
+    <section id="inicio" class="tela ativa">
+
+        <div class="coracao">❤️</div>
+
+        <h1></h1>Ola, Vitoria chagasxxx🫖🫖🫖
+
+        <p>
+            Eu preparei uma pequena surpresa para você...
+            Mas para descobrir o que é, você vai precisar
+            participar de um pequeno jogo. 👀
+        </p>
+
+        <button onclick="iniciarJogo()">
+            Começar 
+        </button>
+
+    </section>
+
+
+    <!-- PERGUNTA 1 -->
+    <section id="pergunta1" class="tela">
+
+        <div class="progresso">
+            Pergunta 1 de 3
+        </div>
+
+        <h2>📱 Como tudo começou?</h2>
+
+        <p>
+            Tudo começou de um jeito que talvez nenhum dos dois
+            imaginasse...
+        </p>
+
+        <p class="subtitulo">
+            Onde começou a nossa história?
+        </p>
+
+        <div class="alternativas">
+
+            <button class="alternativa" onclick="selecionar(this, 'tiktok')">
+                📱 TikTok
+            </button>
+
+            <button class="alternativa" onclick="selecionar(this, 'instagram')">
+                📸 Instagram
+            </button>
+
+            <button class="alternativa" onclick="selecionar(this, 'whatsapp')">
+                💬 WhatsApp
+            </button>
+
+            <button class="alternativa" onclick="selecionar(this, 'rua')">
+                🚶 Por acaso na rua
+            </button>
+
+        </div>
+
+        <p class="subtitulo">
+            E por que você escolheu essa resposta? 👀
+        </p>
+
+        <textarea
+            id="justificativa1"
+            placeholder="Escreva sua resposta aqui..."
+        ></textarea>
+
+        <p id="erro1" class="erro">
+            Escolha uma opção e escreva sua justificativa ❤️
+        </p>
+
+        <button onclick="pergunta2()">
+            Continuar ❤️
+        </button>
+
+    </section>
+
+
+    <!-- PERGUNTA 2 -->
+    <section id="pergunta2" class="tela">
+
+        <div class="progresso">
+            Pergunta 2 de 3
+        </div>
+
+        <h2>❤️ Uma data especial</h2>
+
+        <p>
+            Agora vamos voltar para um dia que ficou marcado
+            na nossa história...
+        </p>
+
+        <p class="subtitulo">
+            Qual dessas datas você acha que foi?
+        </p>
+
+        <div class="alternativas">
+
+            <button class="alternativa" onclick="selecionar2(this, 'calourada')">
+                🎉 Calourada
+            </button>
+
+            <button class="alternativa" onclick="selecionar2(this, 'will')">
+                🍔 Lanche do Will
+            </button>
+
+            <button class="alternativa" onclick="selecionar2(this, 'namorados')">
+                ❤️ Dia dos Namorados
+            </button>
+
+            <button class="alternativa" onclick="selecionar2(this, 'dia16')">
+                ✨ Dia 16
+            </button>
+
+        </div>
+
+        <p class="subtitulo">
+            Por que você acha que essa foi a resposta? 👀
+        </p>
+
+        <textarea
+            id="justificativa2"
+            placeholder="Quero saber o que você pensou..."
+        ></textarea>
+
+        <p id="erro2" class="erro">
+            Escolha uma opção e escreva sua justificativa ❤️
+        </p>
+
+        <button onclick="pergunta3()">
+            Continuar ❤️
+        </button>
+
+    </section>
+
+
+    <!-- PERGUNTA 3 -->
+    <section id="pergunta3" class="tela">
+
+        <div class="progresso">
+            Pergunta 3 de 3
+        </div>
+
+        <h2>💭 Os nossos 5 meses</h2>
+
+        <p>
+            Antes de tudo acontecer, teve uma fase em que a gente
+            simplesmente conversava...
+        </p>
+
+        <p>
+            Foram 5 meses conhecendo um ao outro, descobrindo
+            gostos, jeitos e criando uma conexão.
+        </p>
+
+        <p class="subtitulo">
+            O que você acha que fez a gente continuar
+            conversando durante todo aquele tempo? ❤️
+        </p>
+
+        <textarea
+            id="resposta3"
+            placeholder="Escreva o que você acha..."
+        ></textarea>
+
+        <p id="erro3" class="erro">
+            Escreva uma resposta antes de continuar ❤️
+        </p>
+
+        <button onclick="finalizarPerguntas()">
+            Continuar ❤️
+        </button>
+
+    </section>
+
+
+    <!-- DESBLOQUEIO -->
+    <section id="desbloqueio" class="tela">
+
+        <div class="grande">🔓</div>
+
+        <h2>Você chegou até aqui...</h2>
+
+        <p>
+            Você relembrou um pouquinho da nossa história.
+        </p>
+
+        <p>
+            Mas ainda tem uma coisa esperando por você. 👀❤️
+        </p>
+
+        <button onclick="mostrarRecompensas()">
+            Descobrir 🎁
+        </button>
+
+    </section>
+
+
+    <!-- RECOMPENSAS -->
+    <section id="recompensas" class="tela">
+
+        <div class="grande">🎁</div>
+
+        <h2>Recompensa desbloqueada!</h2>
+
+        <p>
+            Você chegou até o final. ❤️
+        </p>
+
+        <p>
+            Agora você pode escolher <strong>UMA</strong> recompensa.
+            Escolha com sabedoria. 👀
+        </p>
+
+        <div class="recompensas">
+
+            <div class="recompensa" onclick="escolherRecompensa('Lanche do Will')">
+                <h3>🍔 Lanche do Will</h3>
+
+                <p>
+                    Vale um lanche no Will.
+                    Hoje o lanche é por minha conta. ❤️
+                </p>
+            </div>
+
+            <div class="recompensa" onclick="escolherRecompensa('Vale-roupa de R$ 100')">
+                <h3>👗 Vale-roupa</h3>
+
+                <p>
+                    Um vale-roupa de R$ 100 para você
+                    escolher alguma coisa que goste.
+                </p>
+            </div>
+
+            <div class="recompensa" onclick="escolherRecompensa('Surpresa')">
+                <h3>🎁 Uma surpresa</h3>
+
+                <p>
+                    Eu não vou contar o que é.
+                    Se escolher essa opção, vai ter que confiar em mim. 👀
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONFIRMAÇÃO -->
+    <section id="confirmacao" class="tela">
+
+        <div class="grande">👀</div>
+
+        <h2>Tem certeza?</h2>
+
+        <p>
+            Depois de confirmar, as outras duas recompensas
+            serão bloqueadas.
+        </p>
+
+        <p id="recompensaEscolhida" class="subtitulo"></p>
+
+        <button onclick="confirmarRecompensa()">
+            É ESSA! ❤️
+        </button>
+
+        <button onclick="voltarRecompensas()">
+            Voltar
+        </button>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section id="final" class="tela">
+
+        <div class="grande">❤️</div>
+
+        <h2>Recompensa resgatada!</h2>
+
+        <p id="resultadoFinal"></p>
+
+        <p>
+            Obrigado por fazer parte da minha história. ❤️
+        </p>
+
+        <p>
+            E isso é só o começo...
+        </p>
+
+    </section>
+
+</div>
+
+
+<script>
+
+    let resposta1 = "";
+    let resposta2 = "";
+    let recompensaSelecionada = "";
+
+
+    function trocarTela(id) {
+
+        document.querySelectorAll(".tela").forEach(function(tela) {
+            tela.classList.remove("ativa");
+        });
+
+        document.getElementById(id).classList.add("ativa");
+    }
+
+
+    function iniciarJogo() {
+        trocarTela("pergunta1");
+    }
+
+
+    function selecionar(botao, resposta) {
+
+        document.querySelectorAll("#pergunta1 .alternativa")
+            .forEach(function(btn) {
+                btn.classList.remove("selecionada");
+            });
+
+        botao.classList.add("selecionada");
+
+        resposta1 = resposta;
+    }
+
+
+    function selecionar2(botao, resposta) {
+
+        document.querySelectorAll("#pergunta2 .alternativa")
+            .forEach(function(btn) {
+                btn.classList.remove("selecionada");
+            });
+
+        botao.classList.add("selecionada");
+
+        resposta2 = resposta;
+    }
+
+
+    function pergunta2() {
+
+        const justificativa =
+            document.getElementById("justificativa1").value.trim();
+
+        if (resposta1 === "" || justificativa === "") {
+
+            document.getElementById("erro1").style.display = "block";
+
+            return;
+        }
+
+        document.getElementById("erro1").style.display = "none";
+
+        trocarTela("pergunta2");
+    }
+
+
+    function pergunta3() {
+
+        const justificativa =
+            document.getElementById("justificativa2").value.trim();
+
+        if (resposta2 === "" || justificativa === "") {
+
+            document.getElementById("erro2").style.display = "block";
+
+            return;
+        }
+
+        document.getElementById("erro2").style.display = "none";
+
+        trocarTela("pergunta3");
+    }
+
+
+    function finalizarPerguntas() {
+
+        const resposta =
+            document.getElementById("resposta3").value.trim();
+
+        if (resposta === "") {
+
+            document.getElementById("erro3").style.display = "block";
+
+            return;
+        }
+
+        document.getElementById("erro3").style.display = "none";
+
+        trocarTela("desbloqueio");
+    }
+
+
+    function mostrarRecompensas() {
+
+        trocarTela("recompensas");
+    }
+
+
+    function escolherRecompensa(recompensa) {
+
+        recompensaSelecionada = recompensa;
+
+        document.getElementById("recompensaEscolhida").innerHTML =
+            "Sua escolha: <strong>" + recompensa + "</strong>";
+
+        trocarTela("confirmacao");
+    }
+
+
+    function voltarRecompensas() {
+
+        trocarTela("recompensas");
+    }
+
+
+    function confirmarRecompensa() {
+
+        let mensagem = "";
+
+        if (recompensaSelecionada === "Lanche do Will") {
+
+            mensagem =
+                "🍔 Você escolheu o Lanche do Will! " +
+                "Agora é só escolher o dia. ❤️";
+
+        }
+
+        else if (recompensaSelecionada === "Vale-roupa de R$ 100") {
+
+            mensagem =
+                " Você escolheu o vale-roupa de R$ 100! " +
+                "Espero que encontre alguma na loja na porrada. ❤️";
+
+        }
+
+        else {
+
+            mensagem =
+                "Você escolheu a surpresa... " +
+                "Agora vai ter que esperar para descobrir.";
+
+        }
+
+        document.getElementById("resultadoFinal").innerHTML = mensagem;
+
+        trocarTela("final");
+    }
+
+</script>
+
+</body>
+</html>
